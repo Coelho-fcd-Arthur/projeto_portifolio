@@ -14,9 +14,15 @@ build/
 dist/
 out/
 
-# Arquivos de ambiente
+# Arquivos de ambiente e credenciais
 .env
 .env.*
+!.env.example
+
+# Configurações específicas da máquina
+*.local
+*.local.*
+config.local.*
 
 # IDEs e editores
 .vscode/
