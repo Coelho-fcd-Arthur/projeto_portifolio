@@ -43,15 +43,15 @@ Depois, abra o endereço informado no terminal no navegador. Outra opção é us
 
 ### Sobre mim
 
-![Seção Sobre mim](prints/Sobremim.png)
+![Seção Sobre mim](https://raw.githubusercontent.com/Coelho-fcd-Arthur/projeto_portifolio/main/prints/Sobremim.png)
 
 ### Galeria
 
-![Galeria](prints/Galeria.png)
+![Galeria](https://raw.githubusercontent.com/Coelho-fcd-Arthur/projeto_portifolio/main/prints/Galeria.png)
 
 ### Contatos
 
-![Seção de contatos](prints/contatos.png)
+![Seção de contatos](https://raw.githubusercontent.com/Coelho-fcd-Arthur/projeto_portifolio/main/prints/contatos.png)
 
 ## Licença
 
