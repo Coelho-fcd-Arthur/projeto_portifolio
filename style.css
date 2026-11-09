@@ -1,0 +1,167 @@
+/* ===== VARIÁVEIS (cores e fontes em um lugar só) ===== */
+:root {
+  --fundo: #1b1c1f;
+  --painel: #26272c;
+  --painel-escuro: #121315;
+  --claro: #dcdde0;
+  --texto: #e8e8ea;
+  --suave: #a4a6ad;
+  --destaque: #f2c744;   /* amarelo de lápis */
+  --borda: #383a41;
+  --fonte-titulo: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  --fonte-corpo: "Karla", Arial, sans-serif;
+}
+
+/* ===== BASE ===== */
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+  font-family: var(--fonte-corpo);
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.7;
+  padding-top: 72px; /* espaço para o cabeçalho fixo */
+}
+
+h2, h3, .marca { font-family: var(--fonte-titulo); letter-spacing: -0.02em; }
+h2 { font-weight: 800; font-size: clamp(1.7rem, 4vw, 2.3rem); margin-bottom: .75rem; }
+p { color: var(--suave); max-width: 62ch; }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--destaque); outline-offset: 3px; }
+
+/* ===== CABEÇALHO ===== */
+.barra { background: var(--painel); border-bottom: 1px solid var(--borda); padding: .9rem 0; }
+.marca { font-size: 1.7rem; font-weight: 800; color: var(--texto) !important; }
+.barra .nav-link { color: var(--suave); position: relative; margin-left: 1rem; }
+.barra .nav-link:hover { color: var(--texto); }
+/* linha amarela que cresce embaixo do link */
+.barra .nav-link::after {
+  content: ""; position: absolute; left: 0; bottom: 2px;
+  width: 100%; height: 2px; background: var(--destaque);
+  transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+}
+.barra .nav-link:hover::after { transform: scaleX(1); }
+
+/* ===== BANNER: FOTO + SOBRE MIM ===== */
+.banner {
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) 1fr;
+  margin-top: 2rem;
+  background: var(--claro);
+  border-radius: 8px;
+  overflow: hidden;
+  animation: entrada .8s ease both; /* única animação ao carregar a página */
+}
+.banner-foto { position: relative; min-height: 280px; background: #8d8f96; display: grid; place-items: center; color: #fff; }
+.banner-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.banner-texto { padding: 2.5rem; color: #1b1c1f; }
+.banner-texto p { color: #3a3c42; }
+
+@keyframes entrada {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ===== BLOCOS ===== */
+.bloco { margin-top: 4.5rem; }
+
+/* Animação de entrada ao rolar (o JavaScript adiciona .visivel) */
+.js .revelar { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.js .revelar.visivel { opacity: 1; transform: none; }
+
+/* ===== CARROSSEL ===== */
+.carrossel { position: relative; margin-top: 1.5rem; }
+
+.trilho {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: .5rem .25rem 1rem;
+}
+.trilho::-webkit-scrollbar { display: none; }
+
+.card-desenho {
+  flex: 0 0 min(250px, 72%);
+  scroll-snap-align: start;
+  text-align: left;
+  background: var(--painel);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: .75rem;
+  color: inherit;
+  transition: transform .25s ease, border-color .25s ease;
+}
+.card-desenho:hover { transform: translateY(-6px); border-color: var(--destaque); }
+.card-desenho:active { transform: translateY(-2px) scale(.99); }
+
+.moldura { display: block; aspect-ratio: 3 / 4; background: #3d3f46; border-radius: 4px; overflow: hidden; }
+.moldura img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.card-desenho:hover .moldura img { transform: scale(1.06); }
+
+.legenda { display: block; font-family: var(--fonte-titulo); font-weight: 700; margin-top: .75rem; }
+.resumo { display: block; font-size: .9rem; color: var(--suave); line-height: 1.5; }
+
+/* Setas (círculos) */
+.seta {
+  position: absolute; top: 42%; z-index: 2;
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 0; background: var(--claro); color: #1b1c1f; font-size: 1.3rem;
+  transition: transform .2s ease, opacity .2s ease, background .2s ease;
+}
+.seta:hover { background: var(--destaque); transform: scale(1.1); }
+.seta:active { transform: scale(.95); }
+.seta-ant { left: -12px; }
+.seta-prox { right: -12px; }
+.seta.escondida { opacity: 0; pointer-events: none; }
+
+/* ===== CONTATOS ===== */
+.caixa-contato {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+  background: var(--painel-escuro);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 2.5rem;
+}
+.redes { list-style: none; padding: 0; margin-top: 1.5rem; display: flex; gap: 1.2rem; flex-wrap: wrap; }
+.redes a { color: var(--destaque); font-weight: 500; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s; }
+.redes a:hover { border-color: var(--destaque); }
+
+.form-control { background: var(--painel); border-color: var(--borda); color: var(--texto); }
+.form-control:focus { background: var(--painel); color: var(--texto); border-color: var(--destaque); box-shadow: 0 0 0 .2rem rgba(242, 199, 68, .2); }
+
+.btn-destaque { background: var(--destaque); color: #1b1c1f; border: 0; border-radius: 6px; font-weight: 700; transition: transform .2s ease, filter .2s ease; }
+.btn-destaque:hover { filter: brightness(1.1); transform: translateY(-2px); color: #1b1c1f; }
+
+/* ===== FOOTER ===== */
+.rodape { text-align: center; padding: 3rem 1rem; margin-top: 3rem; color: var(--suave); }
+
+/* ===== JANELINHA (MODAL) ===== */
+.modal-content { background: var(--painel); border: 1px solid var(--borda); border-radius: 10px; }
+.modal-fechar { position: absolute; top: 14px; right: 14px; z-index: 3; }
+.modal-grade { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; padding: 1.75rem; align-items: center; }
+.modal-grade img { width: 100%; max-height: 70vh; object-fit: contain; border-radius: 6px; background: #3d3f46; }
+.modal-grade h3 { font-weight: 800; font-size: 1.6rem; }
+#modal-descricao { white-space: pre-line; } /* respeita quebras de linha do texto */
+
+/* Animação de abrir: dá um leve zoom em vez de só descer */
+.modal.fade .modal-dialog { transform: scale(.92) translateY(14px); opacity: 0; transition: transform .3s ease, opacity .3s ease; }
+.modal.show .modal-dialog { transform: none; opacity: 1; }
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 767px) {
+  .banner, .caixa-contato, .modal-grade { grid-template-columns: 1fr; }
+  .banner-foto { min-height: 220px; }
+  .banner-texto, .caixa-contato { padding: 1.5rem; }
+  .seta-ant { left: -4px; }
+  .seta-prox { right: -4px; }
+  .bloco { margin-top: 3.5rem; }
+}
+
+/* Respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+  html, .trilho { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .revelar { opacity: 1; transform: none; }
+}
