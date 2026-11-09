@@ -41,16 +41,17 @@ Depois, abra o endereço informado no terminal no navegador. Outra opção é us
 
 ## Demonstração visual
 
-A pasta `docs/` ainda precisa receber os prints do projeto. Crie a pasta e adicione as imagens abaixo com os nomes sugeridos:
+### Sobre mim
 
-<!-- ![Página inicial](docs/print-home.png) -->
-<!-- ![Galeria de projetos e desenhos](docs/print-projetos.png) -->
-<!-- ![Seção de contato](docs/print-contato.png) -->
+![Seção Sobre mim](prints/Sobremim.png)
 
-Os arquivos esperados para a documentação visual são:
-- `docs/print-home.png`
-- `docs/print-projetos.png`
-- `docs/print-contato.png`
+### Galeria
+
+![Galeria](prints/Galeria.png)
+
+### Contatos
+
+![Seção de contatos](prints/contatos.png)
 
 ## Licença
 
