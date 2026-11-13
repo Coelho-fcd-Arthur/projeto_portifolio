@@ -1,10 +1,3 @@
-/* =====================================================
-   ARQUIVO DE CONTEÚDO: edite aqui para mudar o site.
-   Não precisa mexer no HTML, CSS ou no script.js.
-   Regras: todo texto fica entre aspas "", e os itens
-   de uma lista são separados por vírgula.
-   ===================================================== */
-
 const DADOS = {
 
   // ----- Cabeçalho -----
